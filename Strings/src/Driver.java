@@ -7,9 +7,13 @@ public class Driver {
 
 	public static void main(java.lang.String[] args) {
 		
-		Stdio keyboard = new Stdio();
+		In stdi = new In();
+		Out stdo = new Out();
 		
-		System.out.println(print(keyboard.nextLine()));
+		String temp = stdi.nextLine();
+		
+		stdo.println(temp);
+		
 
 		
 		

@@ -6,9 +6,9 @@ import java.io.IOException;
 *
 */
 
-public class Stdio {
+public class In {
 
-	public Stdio() {}
+	public In() {}
 	
 	public String nextLine() {
 		boolean notEnter = true, first = true;
@@ -38,5 +38,16 @@ public class Stdio {
 		String str = new String(head);
 		return str;
 	}
+	
+	public char nextChar() {
+		try {
+			return (char) System.in.read();
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+			return '\0';
+		}
+	}
+	
+	
 	
 }
