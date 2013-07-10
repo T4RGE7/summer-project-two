@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author James Roberts jpr242
+ *
+ */
 public class CharNode {
 	
 	private char data;

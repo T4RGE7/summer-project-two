@@ -1,3 +1,8 @@
+/**
+ * 
+ * @author James Roberts jpr242
+ *
+ */
 import java.util.Scanner;
 
 
