@@ -1,4 +1,4 @@
-	/**
+/**
  * 
  * @author James Roberts jpr242
  *
@@ -7,20 +7,11 @@ public class Driver {
 
 	public static void main(java.lang.String[] args) {
 		
-
-		String temp = new String("abcdefghijk");
-		temp.moveCurrent(0);
-		System.out.println(temp.getCurrent().getData());
-	//	printAddresses(temp);
-		temp.insert("Test", 0);
-		System.out.println(print(temp));
-//		System.out.println(print(temp.substring(1, 2)));
-//		System.out.println(new String("").indexOf(new String(" ")));
+		Stdio keyboard = new Stdio();
 		
-		Number one = new Number(new String("20"));
-		Number two = new Number(new String("-19"));
-		Number three = one.subtract(two);
-		System.out.println(print(three));
+		System.out.println(print(keyboard.nextLine()));
+
+		
 		
 	}
 	
