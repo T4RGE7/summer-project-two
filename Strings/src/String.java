@@ -13,16 +13,16 @@ public class String {
 	
 	public String() {
 		
-		System.out.print("Enter your string");
-		java.lang.String temp = new Scanner(System.in).nextLine();
-		new String(temp);
+		this.head = new In().nextLine().getHead();
+		this.current = this.head;
 		
 	}
 	
 	public String(String data) {
-		this.head = data.getHead();
-		this.current = data.getCurrent();
-		this.previous = data.getPrevious();
+		/*data.setCurrent(data.getHead());
+		this.head = new String(data.getCurrent()).getHead();
+		this.current = this.head;*/
+		this(data.getHead());
 	}
 	
 	public String(java.lang.String newString) {
@@ -43,17 +43,17 @@ public class String {
 	
 	public String(CharNode n) {
 		this.head = new CharNode(n.getData());
-		this.current = head;
+		this.current = this.head;
 		CharNode temp;
 		while(n.getPointer() != null) {
-			temp = new CharNode(n.getPointer().getData());
+			n = n.getPointer();
+			temp = new CharNode(n.getData());
 			this.current.setPointer(temp);
 			this.current = temp;
-			n = n.getPointer();
 		}
 		
 	}
-	
+	//ok
 	public char charAt(int index) throws IndexOutOfBoundsException, NullPointerException {
 		
 		if(index < 0 || index > this.length() - 1) {
@@ -79,8 +79,10 @@ public class String {
 		return this.current.getData();
 		
 	}
-	
-	public void insert(String data) {
+	//ok
+	public void insert(String toInsert) {
+		
+		String data = new String(toInsert);
 		
 		CharNode newNode = data.getHead();
 		
@@ -91,7 +93,7 @@ public class String {
 			for(;lastNode.getPointer() != null; lastNode = lastNode.getPointer());
 		}
 		
-		if(head == null) {
+		if(this.head == null) {
 			this.head = newNode;
 		} else {
 			for(; this.current.getPointer() != null; this.current = this.current.getPointer());
@@ -100,8 +102,11 @@ public class String {
 		}
 		
 	}
-	
-	public void insert(String data, int index) {
+	//ok
+	public void insert(String toInsert, int index) {
+		
+		String data = new String(toInsert);
+		
 		if(index < 0) {
 			throw new IndexOutOfBoundsException();
 		}
@@ -111,7 +116,7 @@ public class String {
 			this.head = data.getHead();
 			return;
 		}
-		this.moveCurrent(index);
+		this.moveCurrent(index - 1);
 		if(current.getPointer() == null) {
 			this.insert(data);
 		} else {
@@ -119,11 +124,11 @@ public class String {
 			CharNode tempEnd = tempStart.getPointer();
 //			String1 temp = new String1(data);
 			tempStart.setPointer(data.getHead());
-			data.moveCurrent(data.length());
+			data.moveCurrent(data.length() - 1);
 			data.getCurrent().setPointer(tempEnd);
 		}
 	}
-	
+	//ok
 	public int indexOf(String string) {
 		//boolean toReturn = true;
 	//this.current = this.head;
@@ -132,6 +137,9 @@ public class String {
 	//		System.out.println(this.charAt(i) + " : " + string.charAt(0));
 			if(this.charAt(i) == string.charAt(0)) {
 				for(int j = 0; j < string.length(); j++) {
+					if(i + j >= this.length()) {
+						return -1;
+					}
 					if(string.charAt(j) != this.charAt(i + j)) {
 						continue outer;
 					}
@@ -141,12 +149,15 @@ public class String {
 		}
 		return -1;
 	}
-	
+	//ok
 	public int indexOf(String string, int start) {
 		outer:for(int i = start; i < this.length(); i++) {
 //			System.out.println(this.charAt(i) + " : " + string.charAt(i));
 			if(this.charAt(i) == string.charAt(0)) {
 				for(int j = 0; j < string.length(); j++) {
+					if(i + j >= this.length()) {
+						return -1;
+					}
 					if(string.charAt(j) != this.charAt(i + j)) {
 						continue outer;
 					}
@@ -156,12 +167,12 @@ public class String {
 		}
 		return -1;
 	}
-
+	//ok
 	public String substring(int start) {
 		this.moveCurrent(start);
 		return new String(this.current);
 	}
-	
+	//ok
 	public String substring(int start, int end) {
 		this.moveCurrent(start);
 		String toReturn = new String(this.current);
@@ -171,14 +182,14 @@ public class String {
 	}
 	
 	public void moveCurrent(int i) throws NullPointerException {
-		this.current = this.head;
+		//this.current = this.head;
 		try {
 			this.charAt(i);
 		} catch (NullPointerException e) {
 			throw new NullPointerException();
 		}
-		
-		for(int j = 1; j < i && current.getPointer() != null; j++, this.current = this.current.getPointer());
+		this.current = this.head;
+		for(int j = 0; j < i && current.getPointer() != null; j++, this.current = this.current.getPointer());
 	}
 	
 	public int length() {
