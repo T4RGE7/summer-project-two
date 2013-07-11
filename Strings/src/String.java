@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 
 
-public class String {
+public class String implements LLStringInterface{
 	
 	private CharNode head, previous, current;
 	
@@ -205,7 +205,7 @@ public class String {
 	}
 	
 	public CharNode toString1() {
-		return head;
+		return this.head;
 		/*String toReturn = "";
 		CharNode temp = this.head;
 		for(;temp.getPointer() != null; toReturn += temp.getData() + "", temp = temp.getPointer());

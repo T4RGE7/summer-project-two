@@ -7,22 +7,13 @@ public class Driver {
 
 	public static void main(java.lang.String[] args) {
 		
-		In stdi = new In();
-		Out stdo = new Out();
+		In stdi = new In(System.in);
+		Out stdo = new Out(System.out);
 		
-		
-		String str1 = new String("hello");
-		String str2 = new String(" world");
-		str1.insert(str2);
-		str2.set('1', 0);
-		
+		String str1 = new String("Hello World");
 		stdo.println(str1);
-		stdo.println(str2);
 		
-		Number one = new Number(new String("10101"));
-		Number two = new Number(new String("202"));
 		
-		stdo.println(one.subtract2(two).getNumber());
 	}
 	
 	public static java.lang.String print(Number n) {

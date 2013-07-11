@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
 * 
@@ -7,15 +8,23 @@ import java.io.IOException;
 */
 
 public class In {
+	
+	private InputStream iS;
 
-	public In() {}
+	public In() {
+		
+	}
+	
+	public In(InputStream iS) {
+		this.iS = iS;
+	}
 	
 	public String nextLine() {
 		boolean notEnter = true, first = true;
 		CharNode head = new CharNode(), current = new CharNode();
 		while(true){
 			try{
-				char in = (char)System.in.read();
+				char in = (char)iS.read();
 				
 				if(in == '\n') {
 					break;
@@ -47,7 +56,6 @@ public class In {
 			return '\0';
 		}
 	}
-	
 	
 	
 }
