@@ -292,16 +292,16 @@ public class String implements LLStringInterface{
 		for(;temp.getPointer() != null; toReturn += temp.getData() + "", temp = temp.getPointer());
 		return toReturn;*/
 	}
-	/**
-	 * Returns the java.lang.String representation of this String
-	 * @return java.lang.String representation of this String
-	 */
-	public java.lang.String toString() {
-		java.lang.String toReturn = "";
-		this.current = this.head;
-		for(; this.current != null; toReturn += this.current.getData(), this.current = this.current.getPointer());
-		return toReturn;
-	}
+//	/**
+//	 * Returns the java.lang.String representation of this String
+//	 * @return java.lang.String representation of this String
+//	 */
+//	public java.lang.String toString() {
+//		java.lang.String toReturn = "";
+//		this.current = this.head;
+//		for(; this.current != null; toReturn += this.current.getData(), this.current = this.current.getPointer());
+//		return toReturn;
+//	}
 	/**
 	 * Sets an individual character in this String
 	 * @param toSet The character to change
