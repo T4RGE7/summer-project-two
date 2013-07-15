@@ -42,7 +42,7 @@ public class Number {
 			return num2.subtract(this);
 		}
 		String result = new String(new CharNode('0'));
-		int mult1 = 1, mult2 = 1, mult3 = 1;
+		int mult1 = 1, mult2 = 1;
 		if (this.number.charAt(0) == '-') {
 			mult1 = -1;
 			this.number = this.number.substring(1);
@@ -50,7 +50,7 @@ public class Number {
 		
 		for(int i = 0; i < this.number.length() || i < num2.getNumber().length(); i++) {
 			result.insert(new String(new CharNode('0')), 0);
-			String temp = new String(new CharNode(result.charAt(result.length()-(i + 1))));
+		//	String temp = new String(new CharNode(result.charAt(result.length()-(i + 1))));
 			int one = 0, two = 0, three = 0;
 			try{
 				one = this.number.charAt(this.number.length() - (i + 1)) - 48;
@@ -278,7 +278,7 @@ public class Number {
 
 		int one = (n1.length() >= 1 ? n1.charAt(0) - 48 : 0);
 		int two = (n2.length() >= 1 ? n2.charAt(0) - 48 : 0);
-		int three = 0;
+	//	int three = 0;
 
 		String n3 = subHelp(n1.substring(1, n1.length()), n2.substring(1, n2.length()));
 	
@@ -292,7 +292,7 @@ public class Number {
 		}
 		if(one < two) {
 			one += 10;
-			three = -1;
+			//three = -1;
 		}
 		return null;
 	}
