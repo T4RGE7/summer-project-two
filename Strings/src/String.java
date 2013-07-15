@@ -299,7 +299,7 @@ public class String implements LLStringInterface{
 	public java.lang.String toString() {
 		java.lang.String toReturn = "";
 		this.current = this.head;
-		for(; this.current.getPointer() != null; toReturn += this.current.getData(), this.current = this.current.getPointer());
+		for(; this.current != null; toReturn += this.current.getData(), this.current = this.current.getPointer());
 		return toReturn;
 	}
 	/**

@@ -6,6 +6,10 @@
 public class Number {
 	private String number;
 	
+	/**
+	 * Creates a new Number Object from a String
+	 * @param number
+	 */
 	public Number(String number) {
 		for(int i = 0; i < number.length(); i++) {
 			if ((number.charAt(i) < 48 && number.charAt(i) > 57)) {
@@ -19,7 +23,11 @@ public class Number {
 		}
 		this.number = number;
 	}
-	
+	/**
+	 * Adds a Number to this Number
+	 * @param num2 the Number to be added
+	 * @return the resultant Number
+	 */
 	public Number add(Number num2) {
 		if(num2.getNumber().charAt(0) == '-') {
 			if(this.number.charAt(0) == '-') {
@@ -116,7 +124,11 @@ public class Number {
 		//System.out.println(result.charAt(0));
 		return new Number(result);
 	}
-	
+	/**
+	 * Does actual subtraction
+	 * @param num2 The Number to subtract
+	 * @return the resultant Number
+	 */
 	public Number subtract2(Number num2) {
 		String result = new String(new CharNode('\0'));
 		for(int i = 0; i < this.number.length() || i < num2.getNumber().length(); i++) {

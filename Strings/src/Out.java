@@ -40,4 +40,13 @@ public class Out {
 		this.pS.print(i);
 	}
 	
+	public void print(boolean b) {
+		this.pS.print(b);
+	}
+	
+	public void println(Object o) {
+		this.pS.print(o);
+		this.pS.print('\n');
+	}
+	
 }

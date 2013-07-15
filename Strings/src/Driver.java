@@ -14,10 +14,10 @@ public class Driver {
 		In stdi = new In(System.in);
 		Out stdo = new Out(System.out);
 		
-		Number str1 = new Number(new String("111"));
-		Number str2 = new Number(new String("29"));
-		
-		stdo.print(str1.add(str2).getNumber());
+//		Number str1 = new Number(new String("1000"));
+//		Number str2 = new Number(new String("9"));
+//		
+//		stdo.print(str1.subtract2(str2).getNumber());
 		
 		In file = null;
 		
