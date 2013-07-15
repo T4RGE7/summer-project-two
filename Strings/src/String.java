@@ -36,7 +36,7 @@ public class String implements LLStringInterface{
 	 * Constructor for java.lang.String
 	 * @param newString the java.lang.String to be converted into a Linked String
 	 */
-	public String(java.lang.String newString) {
+	public String(java.lang.String newString) throws IndexOutOfBoundsException{
 		try {
 			CharNode newNode = new CharNode(newString.charAt(0));
 			this.head = newNode;
@@ -132,7 +132,7 @@ public class String implements LLStringInterface{
 	 * @param toInsert The String to insert
 	 * @param index The location to insert (0 at beginning)
 	 */
-	public void insert(String toInsert, int index) {
+	public void insert(String toInsert, int index) throws NullPointerException, IndexOutOfBoundsException{
 		
 		String data = new String(toInsert);
 		
@@ -163,7 +163,7 @@ public class String implements LLStringInterface{
 	 * @param string The String to search for
 	 * @return -1 if not present, otherwise the location
 	 */
-	public int indexOf(String string) {
+	public int indexOf(String string) throws NullPointerException, IndexOutOfBoundsException{
 		//boolean toReturn = true;
 	//this.current = this.head;
 		//string.moveCurrent(0);
@@ -189,7 +189,7 @@ public class String implements LLStringInterface{
 	 * @param start The index to start searching on
 	 * @return -1 if not present, otherwise the location
 	 */
-	public int indexOf(String string, int start) {
+	public int indexOf(String string, int start) throws IndexOutOfBoundsException{
 		outer:for(int i = start; i < this.length(); i++) {
 //			System.out.println(this.charAt(i) + " : " + string.charAt(i));
 			if(this.charAt(i) == string.charAt(0)) {
@@ -234,7 +234,7 @@ public class String implements LLStringInterface{
 	 * @param start The index to start searching returning from
 	 * @return String a portion of this String
 	 */
-	public String substring(int start) {
+	public String substring(int start) throws NullPointerException{
 		this.moveCurrent(start);
 		return new String(this.current);
 	}
@@ -244,7 +244,7 @@ public class String implements LLStringInterface{
 	 * @param end The index to end on
 	 * @return String a portion of this String
 	 */
-	public String substring(int start, int end) {
+	public String substring(int start, int end) throws NullPointerException{
 		this.moveCurrent(start);
 		String toReturn = new String(this.current);
 		toReturn.moveCurrent(end - start - 1);
@@ -256,7 +256,7 @@ public class String implements LLStringInterface{
 	 * @param i The index to move current to
 	 * @throws NullPointerException
 	 */
-	public void moveCurrent(int i) throws NullPointerException {
+	public void moveCurrent(int i) throws NullPointerException, IndexOutOfBoundsException {
 		//this.current = this.head;
 		try {
 			this.charAt(i);
@@ -307,7 +307,7 @@ public class String implements LLStringInterface{
 	 * @param toSet The character to change
 	 * @param index The index to change
 	 */
-	public void set(char toSet, int index) {
+	public void set(char toSet, int index) throws NullPointerException{
 		this.moveCurrent(index);
 		this.current.setData(toSet);
 	}

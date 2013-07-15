@@ -13,8 +13,17 @@ public class StringDriver {
 		String str = stdi.nextLine();
 		stdo.println(str);
 		
+		str = new String();
+		stdo.println(str);
+		
 		String str1 = new String("Hello");
 		String str2 = new String(" world");
+		
+		stdo.println(str1.indexOf(new String("bye")));
+		stdo.println(str1.indexOf(new String("ello")));
+		
+		stdo.println(str1.indexOf(new String("el"), 2));
+		stdo.println(str1.indexOf(new String("el"), 1));
 		
 		stdo.println(str1.search(new String("bye")));
 		stdo.println(str1.search(new String("ello")));

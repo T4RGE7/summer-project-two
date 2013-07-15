@@ -16,29 +16,30 @@ import java.util.regex.Pattern;
 public class In {
 	
 	private InputStream iS;
-	private Readable source;
+//	private Readable source;
 	
-	private In(Readable source, Pattern whiteSpace) {
-		//S
+//	private In(Readable source, Pattern whiteSpace) {
+//		//S
+//	}
+	/**
+	 * Creates a null Input Stream
+	 */
+	public In() {
+		iS = null;
 	}
-
-	public In(File fileName) {
-//		try {
-//			
-//			FileChannel temp = new FileInputStream(fileName).getChannel();
-//			temp.read(dst);
-//	
-//		} catch (Exception e) {
-//			
-//		}
-	}
-	
+	/**
+	 * Creates a new In object with the given InputStream
+	 * @param iS the InputStream to be used
+	 */
 	public In(InputStream iS) {
 		this.iS = iS;
 	}
-	
+	/**
+	 * Reads until the return character
+	 * @return A String object representing the input
+	 */
 	public String nextLine() {
-		boolean notEnter = true, first = true;
+		boolean first = true;
 		CharNode head = new CharNode(), current = new CharNode();
 		while(true){
 			try{
@@ -65,7 +66,10 @@ public class In {
 		String str = new String(head);
 		return str;
 	}
-	
+	/**
+	 * Returns the first character typed
+	 * @return the first character typed
+	 */
 	public char nextChar() {
 		try {
 			return (char) System.in.read();

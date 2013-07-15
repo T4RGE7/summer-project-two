@@ -68,7 +68,9 @@ public class Number {
 			result.set((char)(((one + two + three) / 10) + 48), result.length() - (i + 2));
 		}
 		result = (result.charAt(0) == '0' ? result.substring(1) : result);
-		return new Number(result);
+		Number toReturn = new Number(result);
+		return new Number(toReturn.trim());
+	//	return new Number(result);
 	}
 	
 //	public Number subtract(Number num2) {
@@ -130,6 +132,7 @@ public class Number {
 	 * @return the resultant Number
 	 */
 	public Number subtract(Number num2) {
+		String storage = new String(this.number);
 		String result = new String(new CharNode('\0'));
 		for(int i = 0; i < this.number.length() || i < num2.getNumber().length(); i++) {
 			int one = 0, two = 0;
@@ -167,7 +170,9 @@ public class Number {
 			//result = (one - two) + result;
 			result.insert(new String(new CharNode((char)(one - two + 48))), 0);
 		}
-		return new Number(result);
+		Number toReturn = new Number(result);
+		this.number = storage;
+		return new Number(toReturn.trim());
 	}
 	/**
 	 * Recursivly adds to this number
@@ -191,7 +196,7 @@ public class Number {
 //			System.out.println("--");
 			toReturn.getNumber().set('1', 0);
 		}
-		return toReturn;
+		return new Number(toReturn.trim());
 	}
 	/**
 	 * Helps add, the recursive call
@@ -338,6 +343,31 @@ public class Number {
 //		
 //	}
 	
+	/**
+	 * Trims leading zeros
+	 * @return a string with no leading zeros
+	 */
+	public String trim() {
+		int i = 0;
+		boolean test = true;
+		for(int j = 0; j < this.number.length(); j++) {
+			if(this.number.charAt(j) != '0' && this.number.charAt(j) != '\0') {
+				test = false;
+				break;
+			}
+		}
+		
+		if(test) {
+			return new String(new CharNode('0'));
+		}
+		
+		for(; i < this.number.length() - 1; i++) {
+			if(this.number.charAt(i) != '0') {
+				return this.number.substring(i);
+			}
+		}
+		return this.number;
+	}
 	/**
 	 * Returns the String contained by this Number
 	 * @return this Number's String
