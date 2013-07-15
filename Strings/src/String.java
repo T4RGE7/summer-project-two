@@ -9,15 +9,22 @@ import java.util.Scanner;
 
 public class String implements LLStringInterface{
 	
-	private CharNode head, previous, current;
+	private CharNode head, current;
 	
+	
+	/**
+	 * Null constructor, requires keyboard input with return key to end
+	 */
 	public String() {
-		
 		this.head = new In(System.in).nextLine().getHead();
 		this.current = this.head;
 		
 	}
 	
+	/**
+	 * Constructor creates new String with different pointers from given String
+	 * @param data String who's data is to be replicated
+	 */
 	public String(String data) {
 		/*data.setCurrent(data.getHead());
 		this.head = new String(data.getCurrent()).getHead();
@@ -25,6 +32,10 @@ public class String implements LLStringInterface{
 		this(data.getHead());
 	}
 	
+	/**
+	 * Constructor for java.lang.String
+	 * @param newString the java.lang.String to be converted into a Linked String
+	 */
 	public String(java.lang.String newString) {
 		try {
 			CharNode newNode = new CharNode(newString.charAt(0));
@@ -41,6 +52,10 @@ public class String implements LLStringInterface{
 		}
 	}
 	
+	/**
+	 * Constructor for nodes, creates a new String object with different pointers starting from the given node
+	 * @param n Starting CharNode
+	 */
 	public String(CharNode n) {
 		this.head = new CharNode(n.getData());
 		this.current = this.head;
@@ -53,7 +68,14 @@ public class String implements LLStringInterface{
 		}
 		
 	}
-	//ok
+	
+	/**
+	 * Returns the character at a given index
+	 * @throws IndexOutOfBoundsException for an invalid index
+	 * @throws NullPointerException for an empty string
+	 * @param index The index who's character is to be returned
+	 * @return the character at this index
+	 */
 	public char charAt(int index) throws IndexOutOfBoundsException, NullPointerException {
 		
 		if(index < 0 || index > this.length() - 1) {
@@ -79,7 +101,10 @@ public class String implements LLStringInterface{
 		return this.current.getData();
 		
 	}
-	//ok
+	/**
+	 * Inserts the given String at the end of the this String
+	 * @param toInsert The String to insert
+	 */
 	public void insert(String toInsert) {
 		
 		String data = new String(toInsert);
@@ -102,7 +127,11 @@ public class String implements LLStringInterface{
 		}
 		
 	}
-	//ok
+	/**
+	 * Inserts the given String at the index in this String
+	 * @param toInsert The String to insert
+	 * @param index The location to insert (0 at beginning)
+	 */
 	public void insert(String toInsert, int index) {
 		
 		String data = new String(toInsert);
@@ -128,7 +157,12 @@ public class String implements LLStringInterface{
 			data.getCurrent().setPointer(tempEnd);
 		}
 	}
-	//ok
+	
+	/**
+	 * Searches for the given String from the beginning of this String
+	 * @param string The String to search for
+	 * @return -1 if not present, otherwise the location
+	 */
 	public int indexOf(String string) {
 		//boolean toReturn = true;
 	//this.current = this.head;
@@ -149,7 +183,12 @@ public class String implements LLStringInterface{
 		}
 		return -1;
 	}
-	//ok
+	/**
+	 * Searches for the given String from the starting index in this String
+	 * @param string The String to search for
+	 * @param start The index to start searching on
+	 * @return -1 if not present, otherwise the location
+	 */
 	public int indexOf(String string, int start) {
 		outer:for(int i = start; i < this.length(); i++) {
 //			System.out.println(this.charAt(i) + " : " + string.charAt(i));
@@ -167,12 +206,44 @@ public class String implements LLStringInterface{
 		}
 		return -1;
 	}
-	//ok
+	/**
+	 * Searches for the given String
+	 * @param string The String to search for
+	 * @return true if present, false if not
+	 */
+	public boolean search(String element) {
+		if(this.indexOf(element) >= 0) {
+			return true;
+		}
+		return false;
+	}
+	/**
+	 * Searches for the given String from the starting index in this String
+	 * @param string The String to search for
+	 * @param start The index to start searching on
+	 * @return true if present, false if not
+	 */
+	public boolean search(String element, int start) {
+		if(this.indexOf(element, start) >= 0) {
+			return true;
+		}
+		return false;
+	}
+	/**
+	 * Returns a new String from the start index to the end of the String
+	 * @param start The index to start searching returning from
+	 * @return String a portion of this String
+	 */
 	public String substring(int start) {
 		this.moveCurrent(start);
 		return new String(this.current);
 	}
-	//ok
+	/**
+	 * Returns a new String from the start index to the end index
+	 * @param start The index to start searching returning from
+	 * @param end The index to end on
+	 * @return String a portion of this String
+	 */
 	public String substring(int start, int end) {
 		this.moveCurrent(start);
 		String toReturn = new String(this.current);
@@ -180,7 +251,11 @@ public class String implements LLStringInterface{
 		toReturn.getCurrent().setPointer(null);
 		return toReturn;
 	}
-	
+	/**
+	 * Moves the current node to specified index, not called by other classes
+	 * @param i The index to move current to
+	 * @throws NullPointerException
+	 */
 	public void moveCurrent(int i) throws NullPointerException {
 		//this.current = this.head;
 		try {
@@ -191,7 +266,10 @@ public class String implements LLStringInterface{
 		this.current = this.head;
 		for(int j = 0; j < i && current.getPointer() != null; j++, this.current = this.current.getPointer());
 	}
-	
+	/**
+	 * The length of this String
+	 * @return Length of this String
+	 */
 	public int length() {
 		int toReturn = 0;
 		
@@ -203,48 +281,61 @@ public class String implements LLStringInterface{
 		
 		return toReturn;
 	}
-	
-	public CharNode toString1() {
-		return this.head;
+	/**
+	 * Returns this String
+	 * @return this String
+	 */
+	public String ToString() {
+		return this;
 		/*String toReturn = "";
 		CharNode temp = this.head;
 		for(;temp.getPointer() != null; toReturn += temp.getData() + "", temp = temp.getPointer());
 		return toReturn;*/
 	}
-	
+	/**
+	 * Returns the java.lang.String representation of this String
+	 * @return java.lang.String representation of this String
+	 */
+	public java.lang.String toString() {
+		java.lang.String toReturn = "";
+		this.current = this.head;
+		for(; this.current.getPointer() != null; toReturn += this.current.getData(), this.current = this.current.getPointer());
+		return toReturn;
+	}
+	/**
+	 * Sets an individual character in this String
+	 * @param toSet The character to change
+	 * @param index The index to change
+	 */
 	public void set(char toSet, int index) {
 		this.moveCurrent(index);
 		this.current.setData(toSet);
 	}
-	
-	public void insert(java.lang.String data) {
-		this.insert(new String(data));
-	}
-	
-	public void insert(java.lang.String data, int index) {
-		this.insert(new String(data), index);
-	}
-
+	/**
+	 * Gets the first node in this String
+	 * @return The first Node of this String
+	 */
 	public CharNode getHead() {
 		return head;
 	}
-
+	/**
+	 * Sets the first node of this String
+	 * @param head The node to be set as the first node
+	 */
 	public void setHead(CharNode head) {
 		this.head = head;
 	}
-
-	public CharNode getPrevious() {
-		return previous;
-	}
-
-	public void setPrevious(CharNode previous) {
-		this.previous = previous;
-	}
-
+	/**
+	 * Gets the "Current" node
+	 * @return The "Current" CharNode
+	 */
 	public CharNode getCurrent() {
 		return current;
 	}
-
+	/**
+	 * Sets the "Current" node
+	 * @param current The node to be set
+	 */
 	public void setCurrent(CharNode current) {
 		this.current = current;
 	}

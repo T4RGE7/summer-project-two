@@ -41,7 +41,7 @@ public class Number {
 		}
 		
 		for(int i = 0; i < this.number.length() || i < num2.getNumber().length(); i++) {
-			result.insert("0", 0);
+			result.insert(new String(new CharNode('0')), 0);
 			String temp = new String(result.charAt(result.length()-(i + 1)) + "");
 			int one = 0, two = 0, three = 0;
 			try{
@@ -80,7 +80,7 @@ public class Number {
 		
 	//	num2 = new Number(num2.getNumber().substring(1));
 		for(int i = 0; i < this.number.length() || i < num2.getNumber().length(); i++) {
-			result.insert("0", 0);
+			result.insert(new String(new CharNode('0')), 0);
 			String temp = new String(result.charAt(result.length()-(i + 1)) + "");
 			int one = 0, two = 0, three = 0;
 			try{
