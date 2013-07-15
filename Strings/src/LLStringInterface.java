@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author James Roberts jpr242
+ *
+ */
 public interface LLStringInterface {
 
 	/**

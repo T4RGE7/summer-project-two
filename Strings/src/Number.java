@@ -169,7 +169,11 @@ public class Number {
 		}
 		return new Number(result);
 	}
-
+	/**
+	 * Recursivly adds to this number
+	 * @param num2 the Number to be added
+	 * @return The resultant number
+	 */
 	public Number addR(Number num2) {
 		if(this.number.length() > num2.getNumber().length()) {
 			while(this.number.length() > num2.getNumber().length()) {
@@ -189,7 +193,12 @@ public class Number {
 		}
 		return toReturn;
 	}
-	
+	/**
+	 * Helps add, the recursive call
+	 * @param n1 first Number
+	 * @param n2 second Number
+	 * @return the result Number
+	 */
 	public String addHelp(String n1, String n2) {
 		if(n1.length() == 0 && n2.length() == 0) {
 			return new String(new CharNode('0'));
@@ -220,7 +229,12 @@ public class Number {
 		return n3;
 		
 	}
-	
+	/**
+	 * 
+	 * Recursivly subtracts from this Number
+	 * @param num2 the second Number
+	 * @return the result as a Number
+	 */
 	public Number subtractR(Number num2) {
 		if(this.number.length() > num2.getNumber().length()) {
 			while(this.number.length() > num2.getNumber().length()) {
@@ -233,7 +247,12 @@ public class Number {
 		}
 		return new Number(subHelp(this.number, num2.getNumber()));
 	}
-	
+	/**
+	 * Helps subtract recursivly, the recursive call
+	 * @param n1 the first Number
+	 * @param n2 the second Number
+	 * @return the result as a Number
+	 */
 	public String subHelp(String n1, String n2) {
 
 		if(n1.length() == 0 && n2.length() == 0) {
@@ -280,49 +299,56 @@ public class Number {
 //		return n3;
 	
 	
-	public String carry(String n1) {
-		n1.moveCurrent(n1.length() - 1);
-		int index = -1;
-		boolean found = false;
-		this.number.setCurrent(this.number.getHead());
-		for(int i = 0; i < this.number.length() && !found; i++) {
-			if(n1.getCurrent() == this.number.getCurrent()) {
-				found = true;
-				index = i;
-			} else {
-				this.number.setCurrent(this.number.getCurrent().getPointer());
-			}
-		}
-		String temp = n1.substring(0, index);
-		for(int i = temp.length() - 1; i >= 0; i--) {
-			if(temp.charAt(i) - 48 > 0) {
-				temp.set((char)(temp.charAt(i) - 1), i);
-				for(; i < temp.length() - 1; i++) {
-					temp.set('9', i);
-				}
-				break;
-			}
-		}
-		temp.insert(n1.substring(index, n1.length()));
-		return temp;
-//		if(n1.length() == 0 || n1.length() == 1) {
-//			new Out(System.err).println(false);
-//			System.exit(0);
+//	public String carry(String n1) {
+//		n1.moveCurrent(n1.length() - 1);
+//		int index = -1;
+//		boolean found = false;
+//		this.number.setCurrent(this.number.getHead());
+//		for(int i = 0; i < this.number.length() && !found; i++) {
+//			if(n1.getCurrent() == this.number.getCurrent()) {
+//				found = true;
+//				index = i;
+//			} else {
+//				this.number.setCurrent(this.number.getCurrent().getPointer());
+//			}
 //		}
-//		if(n1.charAt(n1.length() - 1) - 48 > 0) {
-//			char temp = n1.charAt(n1.length() -1);
-//			n1.set((char)(temp - 1), n1.charAt(n1.length() - 1));
-//			return n1;
+//		String temp = n1.substring(0, index);
+//		for(int i = temp.length() - 1; i >= 0; i--) {
+//			if(temp.charAt(i) - 48 > 0) {
+//				temp.set((char)(temp.charAt(i) - 1), i);
+//				for(; i < temp.length() - 1; i++) {
+//					temp.set('9', i);
+//				}
+//				break;
+//			}
 //		}
-//		n1.set('9', n1.length() - 1);
-//		return carry(n1.substring(0, n1.length() - 1));
-		
-	}
+//		temp.insert(n1.substring(index, n1.length()));
+//		return temp;
+////		if(n1.length() == 0 || n1.length() == 1) {
+////			new Out(System.err).println(false);
+////			System.exit(0);
+////		}
+////		if(n1.charAt(n1.length() - 1) - 48 > 0) {
+////			char temp = n1.charAt(n1.length() -1);
+////			n1.set((char)(temp - 1), n1.charAt(n1.length() - 1));
+////			return n1;
+////		}
+////		n1.set('9', n1.length() - 1);
+////		return carry(n1.substring(0, n1.length() - 1));
+//		
+//	}
 	
+	/**
+	 * Returns the String contained by this Number
+	 * @return this Number's String
+	 */
 	public String getNumber() {
 		return number;
 	}
-
+	/**
+	 * Sets the Number held by this String
+	 * @param number The String to be set
+	 */
 	public void setNumber(String number) {
 		this.number = number;
 	}
