@@ -13,12 +13,13 @@ public class NumberDriver {
 		Number num11 = new Number(new String("11"));
 		Number num111 = new Number(new String("111"));
 		
-		stdo.println(num999.add(num1).getNumber());
-		stdo.println(num1000.subtract2(num1).getNumber());
-		stdo.println(num1234.add(num6).getNumber());
+		stdo.println(num999.addR(num1).getNumber());
+		stdo.println(num1000.subtractR(num1).getNumber());
+		stdo.println(num1234.addR(num6).getNumber());
 		stdo.println(num1234.subtract2(num6).getNumber());
-		stdo.println(num100.add(num11).getNumber());
+		stdo.println(num100.addR(num11).getNumber());
 		stdo.println(num111.subtract2(num111).getNumber());
+		
 		
 				
 	}
