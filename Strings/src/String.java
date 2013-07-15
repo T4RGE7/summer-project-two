@@ -13,7 +13,7 @@ public class String implements LLStringInterface{
 	
 	public String() {
 		
-		this.head = new In().nextLine().getHead();
+		this.head = new In(System.in).nextLine().getHead();
 		this.current = this.head;
 		
 	}

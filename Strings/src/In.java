@@ -1,5 +1,11 @@
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.ReadableByteChannel;
+import java.util.regex.Pattern;
 
 /**
 * 
@@ -10,9 +16,21 @@ import java.io.InputStream;
 public class In {
 	
 	private InputStream iS;
+	private Readable source;
+	
+	private In(Readable source, Pattern whiteSpace) {
+		//S
+	}
 
-	public In() {
-		
+	public In(File fileName) {
+//		try {
+//			
+//			FileChannel temp = new FileInputStream(fileName).getChannel();
+//			temp.read(dst);
+//	
+//		} catch (Exception e) {
+//			
+//		}
 	}
 	
 	public In(InputStream iS) {
@@ -57,5 +75,7 @@ public class In {
 		}
 	}
 	
-	
+//	private Readable makeReadable(ReadableByteChannel channel) {
+//		channel.
+//	}
 }
