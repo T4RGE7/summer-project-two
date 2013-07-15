@@ -44,7 +44,7 @@ public class StringDriver {
 		
 		stdo.println(str1.charAt(1));
 		
-		System.out.println(str1.toString());
+		//System.out.println(str1.toString());
 		stdo.println(str1.ToString());
 		
 		
